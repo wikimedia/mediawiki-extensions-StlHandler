@@ -26,9 +26,7 @@
   	    scene = new THREE.Scene();
   	    var dirLight = new THREE.DirectionalLight(0xffffff, 1);
   	    dirLight.position.set(1, 1, 1);
-  	    //scene.add(dirLight);
-
-
+		
   	    var loader = new THREE.STLLoader();
 
   	    loader.load(file, function(geometry) {
@@ -126,7 +124,7 @@
   	  }
 
   	  // http://stackoverflow.com/questions/27409074/three-js-converting-3d-position-to-2d-screen-position-r69 
-  	  // Did not work as intented...
+  	  // Did not work as intended...
   	  function toScreenPosition(obj, camera, ndc) {
   	    var vector = new THREE.Vector3();
 
@@ -243,6 +241,5 @@
 
   	  function render() {
   	    controls.update(); //for cameras
-  	    //controls2.update();
   	    renderer.render(scene, camera);
   	  }

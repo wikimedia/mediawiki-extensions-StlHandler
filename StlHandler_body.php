@@ -32,8 +32,8 @@
 	public static function onImageOpenShowImageInlineBefore( $imagepage, $out ){
 		if ( $imagepage->getDisplayedFile()->getMimeType() === 'application/sla' ){
 			$full_url = $imagepage->getDisplayedFile()->getFullURL();
-			$out->addHtml(
-"<div class='fullMedia'><div id='viewer'><canvas id='stlCanvas' width='600' height='400' style='background:lightgrey;'></canvas></div><span class='fileInfo'>$longDesc</span></div>");
+			$out->addHtml(                                          
+"<div class='fullMedia'><div id='viewer'><canvas id='stlCanvas' width='600' height='480' style='background:lightgrey;'></canvas></div><span class='fileInfo'>$longDesc</span></div>");
 			$out->addHtml(ResourceLoader::makeInlineScript("mw.loader.using( 'ext.StlHandler',
 									function(){
 										initScene('$full_url');
@@ -42,5 +42,9 @@
 		}
 	}
 	 function doTransform( $image, $dstPath, $dstUrl, $params, $flags = 0){
+		 //TODO
+		 
+		
+	
 	}
 }

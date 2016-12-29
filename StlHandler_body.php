@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting( E_ALL );
 /**
  *
  * Handler for stl files.
@@ -32,8 +35,8 @@
 	public static function onImageOpenShowImageInlineBefore( $imagepage, $out ){
 		if ( $imagepage->getDisplayedFile()->getMimeType() === 'application/sla' ){
 			$full_url = $imagepage->getDisplayedFile()->getFullURL();
-			$out->addHtml(                                          
-"<div class='fullMedia'><div id='viewer'><canvas id='stlCanvas' width='600' height='480' style='background:lightgrey;'></canvas></div><span class='fileInfo'>$longDesc</span></div>");
+
+			$out->addHtml(StlHandler::generateHTMLByConfiguration());
 			$out->addHtml(ResourceLoader::makeInlineScript("mw.loader.using( 'ext.StlHandler',
 									function(){
 										initScene('$full_url');
@@ -41,7 +44,34 @@
 			) );
 		}
 	}
-	 function doTransform( $image, $dstPath, $dstUrl, $params, $flags = 0){
+	function generateHTMLByConfiguration(){
+		global $wgStlCanvasWidth, $wgStlCanvasHeight, $wgStlBackgroundImage, $wgStlBackgroundColor;
+		$HTML = "<div class='fullMedia'><div id='viewer'><canvas id='stlCanvas'";
+		if ( isset($wgStlCanvasWidth) ){
+			$HTML .= " width='$wgStlCanvasWidth'";
+		}else {
+			$HTML .= " width='600'";
+		}
+		if ( isset($wgStlCanvasHeight) ){
+			$HTML .= " height='$wgStlCanvasHeight'";
+		}else{
+			$HTML .= " height='480'";
+		}
+		    $HTML .= " style='";
+		if(isset($wgStlBackgroundColor) ){
+			$HTML .= "background-color:$wgStlBackgroundColor;";
+		}else{
+			$HTML .= "background-color:lightgrey;";
+		}
+		if (isset($wgStlBackgroundImage) ){
+			$HTML .= "background-image:url($wgStlBackgroundImage);'";
+		}else{
+			$HTML .= "'";
+		}
+		$HTML .= "></canvas></div><span class='fileInfo'>$longDesc</span></div>";
+		return $HTML;
+	}
+	function doTransform( $image, $dstPath, $dstUrl, $params, $flags = 0){
 		 //TODO
 		 
 		

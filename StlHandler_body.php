@@ -47,12 +47,12 @@ error_reporting( E_ALL );
 	function generateHTMLByConfiguration(){
 		global $wgStlCanvasWidth, $wgStlCanvasHeight, $wgStlBackgroundImage, $wgStlBackgroundColor;
 		$HTML = "<div class='fullMedia'><div id='viewer'><canvas id='stlCanvas'";
-		if ( isset($wgStlCanvasWidth) ){
+		if ( isset($wgStlCanvasWidth) && intval($wgStlCanvasWidth) > 0 ){
 			$HTML .= " width='$wgStlCanvasWidth'";
 		}else {
 			$HTML .= " width='600'";
 		}
-		if ( isset($wgStlCanvasHeight) ){
+		if ( isset($wgStlCanvasHeight) && intval($wgStlCanvasHeight) > 0){
 			$HTML .= " height='$wgStlCanvasHeight'";
 		}else{
 			$HTML .= " height='480'";

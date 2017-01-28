@@ -2,7 +2,7 @@
   "name": "StlHandler",
   "author": "Harri Alasi",
   "url": "https://www.mediawiki.org/wiki/Extension:StlHandler",
-  "description": "This extension provides a viewer for STL files",
+  "descriptionmsg": "stlhandler-desc",
   "version": "1.0",
   "license-name": "GPL-2.0+",
   "type": "other",
@@ -15,7 +15,6 @@
         "OrbitControls.js",
         "STLLoader.js",
         "stlviewer.js"
-
       ]
     }
   },
@@ -25,6 +24,11 @@
   },
   "MediaHandlers": {
     "application/sla": "StlHandler"
+  },
+  "MessagesDirs": {
+    "StlHandler": [
+      "i18n"
+    ]
   },
   "AutoloadClasses": {
     "StlHandler": "StlHandler_body.php"

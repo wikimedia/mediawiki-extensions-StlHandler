@@ -23,11 +23,14 @@
  class StlHandler extends ImageHandler {
 	public static function onBeforePageDisplay ( OutputPage $out, Skin $skin){
 		if (substr($out->getTitle()->getPrefixedText(),0)==="file:"){ //is file page
+			if ( strtolower ($imagepage->getDisplayedFile()->getExtension()) === 'stl' ){
 					$out->addModules('ext.StlHandler');
 			}
 		}
+	}
 
 	public static function onImageOpenShowImageInlineBefore( $imagepage, $out ){
+		if ( strtolower($imagepage->getDisplayedFile()->getExtension()) === 'stl' ){
 			$full_url = $imagepage->getDisplayedFile()->getFullURL();
 
 			$out->addHtml(StlHandler::generateHTMLByConfiguration());
@@ -36,6 +39,7 @@
 										initScene('$full_url');
 									});"
 			) );
+		}
 	}
 	function generateHTMLByConfiguration(){
 		global $wgStlCanvasWidth, $wgStlCanvasHeight, $wgStlBackgroundImage, $wgStlBackgroundColor;

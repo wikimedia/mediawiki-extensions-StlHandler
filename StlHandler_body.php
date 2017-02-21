@@ -61,7 +61,7 @@
 		}else{
 			$HTML .= "'";
 		}
-		$HTML .= "></canvas></div><span class='fileInfo'>$longDesc</span></div>";
+		$HTML .= "></canvas></div><span class='fileInfo'></span></div>";
 		return $HTML;
 	}
 	function doTransform( $image, $dstPath, $dstUrl, $params, $flags = 0){

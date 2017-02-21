@@ -208,7 +208,7 @@
 }
  
   	  function onDocumentMouseDown(event) {
-
+		if (event.target != document.getElementById('stlCanvas')) return;
   	    if (event.button != 0) return;
 
   	    event.preventDefault();

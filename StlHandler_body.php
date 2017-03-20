@@ -41,7 +41,7 @@
 			) );
 		}
 	}
-	function generateHTMLByConfiguration(){
+	static function generateHTMLByConfiguration(){
 		global $wgStlCanvasWidth, $wgStlCanvasHeight, $wgStlBackgroundImage, $wgStlBackgroundColor;
 		$HTML = "<div class='fullMedia'><div id='viewer'><canvas id='stlCanvas'";
 		if ( isset($wgStlCanvasWidth) && intval($wgStlCanvasWidth) > 0 ){

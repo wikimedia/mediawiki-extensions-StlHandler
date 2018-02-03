@@ -8,7 +8,6 @@
 	"type": "other",
 	"ResourceModules": {
 		"ext.StlHandler": {
-			"position": "top",
 			"scripts": [
 				"three.js",
 				"Detector.js",

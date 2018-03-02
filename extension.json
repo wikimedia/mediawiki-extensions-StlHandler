@@ -4,7 +4,7 @@
 	"url": "https://www.mediawiki.org/wiki/Extension:StlHandler",
 	"descriptionmsg": "stlhandler-desc",
 	"version": "1.0",
-	"license-name": "GPL-2.0+",
+	"license-name": "GPL-2.0-or-later",
 	"type": "other",
 	"ResourceModules": {
 		"ext.StlHandler": {
